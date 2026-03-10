@@ -56,35 +56,32 @@ func findValuesAndIndices(randomNumbers: [Double]) {
 //    print("Found values: \(foundValues)")
 }
 
-
-// 1. Create an array containing 100 random numbers:
-
 let randomNumbers = generateRandomNumbers(count: 100)
 
-// 2. Find all elements (and their indices) that are > 0.1 and 0.2:
+// 1. Find all elements (and their indices) that are > 0.1 and 0.2:
 
 findValuesAndIndices(randomNumbers: randomNumbers)
 
-// 3. Filter out all values greater than 0.9:
+// 2. Filter out all values greater than 0.9:
 
 let filteredNumbers = randomNumbers.filter { $0 < 0.9 }
 print("Array filtered for values smaller than 0.9 - contains: \(filteredNumbers.count) values")
 printSeparator()
 
-// 4. Multiply all elements by 100 and convert them to Int.
+// 3. Multiply all elements by 100 and convert them to Int.
 
 let multipliedByHundred = filteredNumbers.map { Int($0 * 100) }
 
-// 5. Convert array to set to filter out duplicates.
+// 4. Convert array to set to filter out duplicates.
 
 let numberSet = Set(multipliedByHundred)
 //print("Multiplied every element of filtered array by 100 and converted to set to remove duplicates.")
 //print("Set contains: \(numberSet.count) numbers.")
-print(numberSet)
-printSeparator()
+//print(numberSet)
+//printSeparator()
 
-// 6. Create a dictionary using tens as keys and arrays of Ints as values, placing them under correct key.
-// 6.1 Create a number partitioning function:
+// 5. Create a dictionary using tens as keys and arrays of Ints as values, placing them under correct key.
+// 5.1 Create a number partitioning function:
 
 /// Partitions given number into tens and ones.
 ///
