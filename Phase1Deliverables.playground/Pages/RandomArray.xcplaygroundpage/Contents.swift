@@ -47,6 +47,7 @@ func findValuesAndIndices(randomNumbers: [Double]) {
 
     for (index, element) in randomNumbers.enumerated() {
         if 0.1 < element && element < 0.2 {
+            // ALTERNATIVE: Create a range 0.1...0.2 and check if it contains element.
             foundValues.append((index, element))
         }
     }
