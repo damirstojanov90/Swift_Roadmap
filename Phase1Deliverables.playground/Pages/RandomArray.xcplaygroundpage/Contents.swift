@@ -65,19 +65,35 @@ findValuesAndIndices(randomNumbers: randomNumbers)
 
 // 2. Filter out all values greater than 0.9:
 
-let filteredNumbers = randomNumbers.filter { $0 < 0.9 }
-print("Array filtered for values smaller than 0.9 - contains: \(filteredNumbers.count) values")
+//let filteredNumbers = randomNumbers.filter { $0 > 0.9 }
+//print("Array filtered for values smaller than 0.9 - contains: \(filteredNumbers.count) values")
+//printSeparator()
+
+/// This doesn't actually "filter out" all the values greater than 0.9 from randomNumbers rather, it
+/// returns an array filteredNumbers that contains all the values from randomNumbers that are greater than 0.9.
+///
+/// If we wanted to actually remove all numbers greater than 0.9, we would use .removeAll { $0 > 0.9 }, however,
+/// since .removeAll is mutating, we can't use it on a constant, but on a variable, so we copy randomNumbers into a variable:
+var randomNumbersVariable = randomNumbers
+print("Copied array contains: \(randomNumbersVariable.count) values and is: \(type(of: randomNumbersVariable))")
+randomNumbersVariable.removeAll(where: { $0 > 0.9 })
+print("Copied array filtered for values smaller than 0.9 - contains: \(randomNumbersVariable.count) values")
 printSeparator()
+
+/// But if we wanted to simultaneously do steps 2 and 3, we could use .map and .filter combined.
+//let randomNumbersFilteredAndMultiplied = randomNumbers
+//    .filter { $0 < 0.9 } // Returns an array of randomNumbers elements smaller than 0.9.
+//    .map { Int($0 * 100) }
 
 // 3. Multiply all elements by 100 and convert them to Int.
 
-let multipliedByHundred = filteredNumbers.map { Int($0 * 100) }
+let multipliedByHundred = randomNumbersVariable.map { Int($0 * 100) }
 
 // 4. Convert array to set to filter out duplicates.
 
 let numberSet = Set(multipliedByHundred)
-//print("Multiplied every element of filtered array by 100 and converted to set to remove duplicates.")
-//print("Set contains: \(numberSet.count) numbers.")
+print("Multiplied every element of filtered array by 100 and converted to set to remove duplicates.")
+print("Set contains: \(numberSet.count) numbers.")
 //print(numberSet)
 //printSeparator()
 
