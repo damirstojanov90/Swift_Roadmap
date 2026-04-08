@@ -56,6 +56,10 @@ class Line: IdentifiableWithDimensions {
     func resizeDoubled(_ dimensions: CGFloat) {
         self.dimensions = dimensions * 2
     }
+
+    func resize(_ dimensions: CGFloat) {
+        self.dimensions = dimensions
+    }
 }
 
 var line1 = Line(id: "Line 1", dimensions: 17.67)
@@ -94,14 +98,14 @@ struct ShortLine: IdentifiableWithDimensions {
     var id: String
     var dimensions: CGFloat
 
-    // THIS IS NOT:
-//    func resizeDouble(_ dimensions: CGFloat) {
-//        self.dimensions = dimensions * 2
-//    }
-    
+    // THIS IS NOT (without mutating):
+    //    func resizeDouble(_ dimensions: CGFloat) {
+    //        self.dimensions = dimensions * 2
+    //    }
+
 }
-var shortLine = ShortLine(id: "Really short line", dimensions: 0.000001)
-shortLine.resize(0.00001)
+var shortLine = ShortLine(id: "Really short line", dimensions: 0.1)
+shortLine.resize(0.01)
 
 //let anotherShortLine = ShortLine(id: "A short line", dimensions: 0.1)
 //anotherShortLine.resize(78) // 🛑 Cannot use mutating member on immutable value: 'anotherShortLine' is a 'let' constant
