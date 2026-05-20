@@ -15,12 +15,41 @@
 
 import Foundation
 
-enum RequestError: Int, Error {
-    case responsesUnavailable = 999
-    case serverError = 500
-    case unauthorized = 401
-    case forbidden = 403
-    case notFound = 404
+enum RequestError: Error {
+    case responsesUnavailable
+    case serverError
+    case unauthorized
+    case forbidden
+    case notFound
+    case unknown(Int)
+
+    var code: Int {
+        switch self {
+        case .responsesUnavailable: 999
+        case .serverError: 500
+        case .unauthorized: 401
+        case .forbidden: 403
+        case .notFound: 404
+        case .unknown(let code): code
+        }
+    }
+
+    static func from(code: Int) -> RequestError {
+        switch code {
+        case 999: .responsesUnavailable
+        case 500: .serverError
+        case 401: .unauthorized
+        case 403: .forbidden
+        case 404: .notFound
+        default: .unknown(code)
+        }
+    }
+}
+
+enum BodyError: Error {
+    case missing
+    case invalidFormat
+    case conversionToData
 }
 
 enum UnknownError: Error {
@@ -33,7 +62,7 @@ struct Response {
 }
 
 /**
- Using #"..."# for raw string litterals allows " without escape characters to mimic JSON in response bodies.
+ Using #"..."# (EXTENDED DELIMITERS) for raw string litterals allows " without escape characters to mimic JSON strings in response bodies?
  */
 let responses = [
     Response(code: 200, body: #"{"id": 1, "name": "Damir"}"#),
@@ -50,7 +79,19 @@ func sendRequest() throws -> Response {
         throw RequestError.responsesUnavailable
     }
     guard response.code == 200 else {
-        throw RequestError(rawValue: response.code) ?? UnknownError.unknown
+        throw RequestError.from(code: response.code)
+    }
+    guard response.body != nil else {
+        throw BodyError.missing
+    }
+    guard let data = response.body?.data(using: .utf8) else {
+        throw BodyError.conversionToData
+    }
+    /// Here, JSONSerializayion.jsonObject(with: data) is used purely to check whether data (bytes) are a valid JSON.
+    /// try? evaluates to `nil` on throw, `Any` on success.
+    let responseBody = try? JSONSerialization.jsonObject(with: data)
+    guard responseBody != nil else {
+        throw BodyError.invalidFormat
     }
     return response
 }
@@ -79,16 +120,20 @@ var isLoading: Bool = false
     } catch let error as RequestError {
         switch error {
         case .responsesUnavailable:
-            print("⚠️  Unable to select a random response!")
+            print("⚠️  \(error.code) -> Unable to select a random response!")
         case .unauthorized:
-            print("🔐  Unauthorized.")
+            print("🔐  \(error.code) -> Unauthorized.")
         case .serverError:
-            print("💥  An internal server error has occured.")
+            print("💥  \(error.code) -> An internal server error has occured.")
         case .forbidden:
-            print("⛔️  Access forbidden.")
+            print("⛔️  \(error.code) -> Access forbidden.")
         case .notFound:
-            print("👀  Not found.")
+            print("👀  \(error.code) -> Not found.")
+        default:
+            print("🤷🏼‍♂️ \(error.code) -> An unknown RequestError has occured with code:  \(error.code).")
         }
+    } catch let error as BodyError {
+        print("📝 An anomaly was detected with the response body:  \(error)")
     } catch let error {
         print("☠️  An unknown error has occured:  \(error)")
     }
