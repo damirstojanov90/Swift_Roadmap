@@ -1,5 +1,3 @@
-//: [Previous](@previous)
-
 enum CustomError: Error {
     case always
 

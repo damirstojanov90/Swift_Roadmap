@@ -17,15 +17,6 @@ enum Semaphore {
             return "🛑 Red Light"
         }
     }
-
-    var meaning: Bool {
-        switch self {
-        case .green:
-            return true
-        case .red:
-            return false
-        }
-    }
 }
 
 var counter: Int = 0
@@ -34,7 +25,7 @@ var trafficLight: Semaphore = .green
 
 print("Starting Semaphore:\t\(trafficLight.light)")
 
-while trafficLight.meaning {
+while trafficLight == .green {
     let randomDouble = Double.random(in: 0.0...5.0)
     counter += 1
     if 0.5 <= randomDouble && randomDouble <= 0.6 {

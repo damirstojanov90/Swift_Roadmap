@@ -13,7 +13,7 @@
 
 import Foundation
 
-protocol IdentifiableWithDimensions: Equatable {
+protocol IdentifiableWithDimensions: Equatable, Identifiable {
     /// Protocols do not allow us to declare properties as either constants or variables, we can declare them as var,
     /// declare their Type, and whether they are gettable, settable or both - meaning, we can't do:
     ///
@@ -21,12 +21,15 @@ protocol IdentifiableWithDimensions: Equatable {
     ///
     /// The only choice we do have is to declare it with a getter only, which allows the conforming type to declare id
     /// as a constant property...
-    var id: String { get }
+    //var id: String { get }
+
+    // TODO: Explore Identifiable protocol.
+
     /// However, since the property dimensions is declared as gettable AND settable, any conforming types are
     /// required to provide a setter, so the property cannot be constant!
     var dimensions: CGFloat { get set }
 
-    mutating func resize(_ dimensions: CGFloat)
+    func resize(_ dimensions: CGFloat)
 }
 
 extension IdentifiableWithDimensions {
@@ -57,6 +60,7 @@ class Line: IdentifiableWithDimensions {
         self.dimensions = dimensions * 2
     }
 
+    // ⚠️ REMEMBER: func resize() and mutating func resize() ARE NOT THE SAME THING!
     func resize(_ dimensions: CGFloat) {
         self.dimensions = dimensions
     }
@@ -97,6 +101,8 @@ randomLine.dimensions = 9001
 struct ShortLine: IdentifiableWithDimensions {
     var id: String
     var dimensions: CGFloat
+
+// TODO: Explore CGRect and CGSize!
 
     // THIS IS NOT (without mutating):
     //    func resizeDouble(_ dimensions: CGFloat) {

@@ -91,10 +91,12 @@ printByDump(aStruct, aClass)
  ⎯ ⎯ ⎯ ⎯ ⎯ ⎯ ⎯ ⎯ ⎯ ⎯ ⎯ ⎯ ⎯ ⎯ ⎯ ⎯ ⎯ ⎯ ⎯ ⎯ ⎯ ⎯ ⎯ ⎯ ⎯ ⎯
 
  Biggest takeaway here is that structs are value types and classes are reference types, meaning:
-    - structs are a VALUE TYPE, meaning that they are a type whose value is copied when assigned to a variable or constant,
-    or when it's passed to a function -> a completely new value is being created in a new memory block with the variable referencing that block
-    - classes are a REFERENCE TYPE, meaning that their value does not get copied when assigned or passed to a function,
-    rather, a REFERENCE to the same existing instance is used -> the memory block containing the initial value just gets another variable referencing it
+    - structs are a VALUE TYPE, meaning that they are a type whose value is copied when assigned to a
+    variable or constant, or when it's passed to a function -> a completely new value is being created in a
+    new memory block with the variable referencing that block
+    - classes are a REFERENCE TYPE, meaning that their value does not get copied when assigned or
+    passed to a function, rather, a REFERENCE to the same existing instance is used -> the memory block
+    containing the initial value just gets another variable referencing it
 
  Meaning, you can safely use structs to "copy" instances, since you are creating a full fledged "copy" of the original, but you can't "copy" classes by just assigning an existing instance to a new variable, since it just creates a reference to an already existing object.
 
@@ -114,3 +116,5 @@ yetAnotherClass.value = 1
 dump(aClass)
 dump(anotherClass)
 dump(yetAnotherClass)
+
+// TODO: Compare two structs using === -> EXPLORE!

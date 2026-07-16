@@ -18,6 +18,10 @@ struct SomeStruct {
     func displayCount() {
         print("Current count:\t\t\(self.checkCount())")
     }
+
+    init(count: Int) {
+        self.count = count
+    }
 }
 
 /// Since var count is the only property and is private, the automatic memberwise initializer takes 0 arguments,
@@ -25,7 +29,7 @@ struct SomeStruct {
 /// >>> Argument passed to call that takes no arguments
 //var testStruct = SomeStruct(count: 17)
 
-var myStruct = SomeStruct()
+var myStruct = SomeStruct(count: 7)
 myStruct.displayCount()
 myStruct.addToCount(17)
 myStruct.displayCount()

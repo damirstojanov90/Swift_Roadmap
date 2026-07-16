@@ -65,8 +65,8 @@ struct Response {
  Using #"..."# (EXTENDED DELIMITERS) for raw string litterals allows " without escape characters to mimic JSON strings in response bodies?
  */
 let responses = [
-    Response(code: 200, body: #"{"id": 1, "name": "Damir"}"#),
-    Response(code: 200, body: #"{"id": 2, "name": "Ana"}"#),
+    Response(code: 200, body: #"{"id": 1, "name": "Mirko"}"#),
+    Response(code: 200, body: #"{"id": 2, "name": "Mirkec"}"#),
     Response(code: 401, body: #"{"error": "Unauthorized", "message": "Token expired"}"#),
     Response(code: 403, body: nil),
     Response(code: 404, body: #"{"error": "Not Found", "message": "Resource missing"}"#),

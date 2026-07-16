@@ -10,6 +10,8 @@
  shared resource (an object/variable, execution context - e.g.: MainThread for updating UI, file handle on the disk, ...).
  */
 
+// TODO : Explore Instruments: Leaks, Allocations
+
 import Foundation
 
 let lockOne: NSLock = NSLock()
@@ -77,5 +79,7 @@ threadTwo.async {
 
  Deadlocks need circular dependencies, so if the same locking order is enforced, they shouldn't occur.
  */
+// TODO: Explore if they will or will not occur - NO SHOULDN'T-s!
+// TODO: Challenge: Deadlock using closures!
 
 print("✅ DONE WITH WORK.")

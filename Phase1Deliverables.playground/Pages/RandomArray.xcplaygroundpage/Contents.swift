@@ -22,6 +22,8 @@ func generateRandomNumbers(count: Int) -> [Double] {
 
 /// Finds numbers between 0.1 and 0.2 in given array of Doubles, prints number and index where it was found.
 /// NOTE: Written without using enumerated()
+///
+///
 func findValues(randomNumbers: [Double]) {
     var currentIndex = 0
     var counter = 0
@@ -188,27 +190,64 @@ for (key, value) in partitionedNumbers.sorted(by: { $0.key < $1.key }) {
  extract tens value, and based on it set proper key.
  */
 
+// TODO: CHALLENGE: Refactor to O(1) - Explore and come up with a solution:
 func lookFor(values: any Sequence<Int>, in dictionary: [Int: [Int]]) {
+    /// 1. for LOOP - O(n), performance rises with number of iterations in a linear fashion.
+
+    /// 2. .sorted() - O(n log n), sits between linear (O(n)) and quadratic (O(n^2)), runs only ONCE when values
+    /// gets sorted, the first for loop iterates through those.
+    /// ⚠️ ISSUE: This is sort of unnecessary, it doesn't really matter what order the target values are in.
     for value in values.sorted() {
         // Reuse partitionNumber for extracting ten of lookup value:
+        /// 3. partitionNumber(: Int) is flat performance, it just divides, stores and returns a tuple. -> Ignore.
         let (ten, _ ) = partitionNumber(value)
 
-
-// TODO: Replace this block with a function and map it to values?
         // Check that dictionary contains that key:
+        /// 4. Acessing the correct array of Ints in the dictionary is flat (O(1)), since Dictionaries use hash tables. -> Ignore.
         guard let valuesForTen = dictionary[ten] else {
             print("⚠️ Value  \(value)  not in dictionary  ->  No values for key:   \(ten)  !")
             continue
         }
         // Check if lookup value contained in the values:
+        /// 5. On the dictionary array, we are using .contains, which is linear performance (O(n)), meaning it rises with the number of elements.
+        /// However, this should be 10 elements at max?
         if valuesForTen.contains(value) {
             print("✅ Value  \(value)  found under key:  \(ten)  : \(valuesForTen)  !")
         } else {
             print("❌ Value  \(value)  not found  ->  Values for key:  \(ten)  : \(valuesForTen)  !")
         }
     }
+    /// Once all the performance costs are put together, we have:
+    /// 1. a single O(n log n) - .sorted
+    /// 2. O(1) + O(1) + O(n) running values.count times.
+    /// HOWEVER, since .sorted depends on the size of the values array, and .contains depends on the size of the dictionary[ten] array, we need to change those values to:
+    /// O(n log n) + n x ( O(1) + O(1) + O(m)) n = values.count and m = dictionary[ten].count.
+    /// Since we can ignore O(1)s, that leaves us with:
+    ///
+    /// O(n log n + n x m)
+    ///
+    /// So, we have two friction points:
+    /// 1. unnecessary `values.sorted()` call
+    /// 2. `valuesForTen.contains(value)`call
+}
+
+/// A refactored version of `func lookFor(values: any Sequence<Int>, in dictionary: [Int: [Int]])`.
+///
+/// Still not O(1) since we are converting a dictionary to Set using flatMap which is O(n+m)
+/// where n is the lenght of the sequence and m is length of the result,
+/// and then using a for loop with values which is O(n), but since numbers is a Set, numbers.contains(value) is now O(1).
+func lookForV2(values: any Sequence<Int>, in dictionary: [Int: [Int]]) {
+    let numbers = Set(dictionary.values.flatMap { $0 })
+    for value in values {
+        if numbers.contains(value) {
+            print("✅ Value \(value) contained in numbers.")
+        } else {
+            print("❌ Value \(value) not found.")
+        }
+    }
 }
 
 printSeparator()
 let lookupNumbers = [55, 70, 99]
-lookFor(values: lookupNumbers, in: partitionedNumbers)
+//lookFor(values: lookupNumbers, in: partitionedNumbers)
+lookForV2(values: lookupNumbers, in: partitionedNumbers)
