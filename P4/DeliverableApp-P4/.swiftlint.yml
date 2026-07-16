@@ -1,0 +1,8 @@
+excluded:
+  - build
+  - .build
+  - DerivedData
+  - Pods
+  - Carthage/Checkouts
+  - vendor
+  - "**/SourcePackages"
