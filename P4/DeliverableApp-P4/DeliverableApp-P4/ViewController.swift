@@ -43,7 +43,8 @@ class ViewController: UIViewController {
         button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
 
         /// Images/icons attached to buttons already track the dynamic type size changes.
-        /// This property prevents scaling past the standard range (if "Larger Accessibility Sizes" is ON) and is false by default.
+        /// This property prevents scaling past the standard range
+        /// (if "Larger Accessibility Sizes" is ON) and is false by default.
         // button.adjustsImageSizeForAccessibilityContentSizeCategory = true
 
         button.translatesAutoresizingMaskIntoConstraints = false

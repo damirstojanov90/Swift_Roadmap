@@ -6,7 +6,18 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		670D11143035EBB80096FBC7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67E0A15A2FC6CD5700DAF885 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 67E0A1612FC6CD5700DAF885;
+			remoteInfo = "DeliverableApp-P4";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		670D11103035EBB80096FBC7 /* DeliverableApp-P4Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DeliverableApp-P4Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67E0A1622FC6CD5700DAF885 /* DeliverableApp-P4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DeliverableApp-P4.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -21,6 +32,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		670D11113035EBB80096FBC7 /* DeliverableApp-P4Tests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "DeliverableApp-P4Tests";
+			sourceTree = "<group>";
+		};
 		67E0A1642FC6CD5700DAF885 /* DeliverableApp-P4 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -32,6 +48,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		670D110D3035EBB80096FBC7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		67E0A15F2FC6CD5700DAF885 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -46,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				67E0A1642FC6CD5700DAF885 /* DeliverableApp-P4 */,
+				670D11113035EBB80096FBC7 /* DeliverableApp-P4Tests */,
 				67E0A1632FC6CD5700DAF885 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				67E0A1622FC6CD5700DAF885 /* DeliverableApp-P4.app */,
+				670D11103035EBB80096FBC7 /* DeliverableApp-P4Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,6 +86,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		670D110F3035EBB80096FBC7 /* DeliverableApp-P4Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 670D11163035EBB80096FBC7 /* Build configuration list for PBXNativeTarget "DeliverableApp-P4Tests" */;
+			buildPhases = (
+				670D110C3035EBB80096FBC7 /* Sources */,
+				670D110D3035EBB80096FBC7 /* Frameworks */,
+				670D110E3035EBB80096FBC7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				670D11153035EBB80096FBC7 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				670D11113035EBB80096FBC7 /* DeliverableApp-P4Tests */,
+			);
+			name = "DeliverableApp-P4Tests";
+			packageProductDependencies = (
+			);
+			productName = "DeliverableApp-P4Tests";
+			productReference = 670D11103035EBB80096FBC7 /* DeliverableApp-P4Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		67E0A1612FC6CD5700DAF885 /* DeliverableApp-P4 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 67E0A1752FC6CD5900DAF885 /* Build configuration list for PBXNativeTarget "DeliverableApp-P4" */;
@@ -91,9 +139,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2630;
+				LastSwiftUpdateCheck = 2650;
 				LastUpgradeCheck = 2630;
 				TargetAttributes = {
+					670D110F3035EBB80096FBC7 = {
+						CreatedOnToolsVersion = 26.5;
+						TestTargetID = 67E0A1612FC6CD5700DAF885;
+					};
 					67E0A1612FC6CD5700DAF885 = {
 						CreatedOnToolsVersion = 26.3;
 					};
@@ -117,11 +169,19 @@
 			projectRoot = "";
 			targets = (
 				67E0A1612FC6CD5700DAF885 /* DeliverableApp-P4 */,
+				670D110F3035EBB80096FBC7 /* DeliverableApp-P4Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		670D110E3035EBB80096FBC7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		67E0A1602FC6CD5700DAF885 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -132,6 +192,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		670D110C3035EBB80096FBC7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		67E0A15E2FC6CD5700DAF885 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -142,6 +209,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		670D11153035EBB80096FBC7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 67E0A1612FC6CD5700DAF885 /* DeliverableApp-P4 */;
+			targetProxy = 670D11143035EBB80096FBC7 /* PBXContainerItemProxy */;
+		};
 		67D359343008F6C30008EA74 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 67D359333008F6C30008EA74 /* SwiftLintBuildToolPlugin */;
@@ -149,6 +221,48 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		670D11173035EBB80096FBC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.damir-stojanov.DeliverableApp-P4Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeliverableApp-P4.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DeliverableApp-P4";
+			};
+			name = Debug;
+		};
+		670D11183035EBB80096FBC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.damir-stojanov.DeliverableApp-P4Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeliverableApp-P4.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DeliverableApp-P4";
+			};
+			name = Release;
+		};
 		67E0A1762FC6CD5900DAF885 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -168,6 +282,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -209,6 +324,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -355,6 +471,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		670D11163035EBB80096FBC7 /* Build configuration list for PBXNativeTarget "DeliverableApp-P4Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				670D11173035EBB80096FBC7 /* Debug */,
+				670D11183035EBB80096FBC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		67E0A15D2FC6CD5700DAF885 /* Build configuration list for PBXProject "DeliverableApp-P4" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
