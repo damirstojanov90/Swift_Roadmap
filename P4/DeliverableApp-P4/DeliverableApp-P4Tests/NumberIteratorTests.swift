@@ -85,8 +85,8 @@ struct NumberIteratorTests {
     }
 
     /// INTENTIONALY FLAKY: This test will fail ~50% of the time, per Deliverable specification!
-    @Test("Test: generateRandomNumber result > 0.5")
-    func testGenerateRandomNumber() {
+    @Test("Test: generateRandomFloat result > 0.5")
+    func testGenerateRandomFloat() {
         let iterator = NumberIterator()
         #expect(iterator.generateRandomFloat() > 0.5)
     }

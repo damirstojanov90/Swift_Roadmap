@@ -22,6 +22,9 @@ class NumberIterator {
         self.number = 0
     }
 
+// See NumberIteratorXCTests.swift for clarification on this:
+    nonisolated deinit {}
+
     /// Specification requires changing number from 0 to 1,
     /// toggling between 0 and 1 added intentionally for Testing.
     func toggleNumber() {
