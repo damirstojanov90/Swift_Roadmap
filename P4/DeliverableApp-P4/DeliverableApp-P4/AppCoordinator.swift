@@ -34,6 +34,10 @@ import UIKit
  - if adding multiple coordinators, it is useful to track them in the "main" coordinator using an array
  `var childCoordinators: [Coordinator] = []`
  once a coordinator is created, it is appended, and once it is finished, it is removed from the array to prevent leaks.
+
+ IMPORTANT:
+ If using an AppCoordinator, you can remove Main.storyboard, just keep in mind you need to modify your `app.xcodeproj`'s
+ Info.plist Values and remove Main from `UIKit Main Storyboard File Base Name`, otherwise you'll get errors!
  */
 protocol Coordinator {
     var navigationController: UINavigationController { get set }
