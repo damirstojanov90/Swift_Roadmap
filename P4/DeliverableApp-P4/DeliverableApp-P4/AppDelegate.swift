@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        print("📣 Running:      AppDelegate.application(_:didFinishLaunchingWithOptions:)")
+        // print("📣 Running:      AppDelegate.application(_:didFinishLaunchingWithOptions:)")
         // Override point for customization after application launch.
         return true
     }

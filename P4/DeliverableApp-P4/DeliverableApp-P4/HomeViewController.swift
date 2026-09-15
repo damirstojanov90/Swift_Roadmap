@@ -7,17 +7,30 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol HomeViewControllerDelegate: AnyObject {
+    func didTapShowTable()
+}
+
+/// HomeViewController
+///
+/// "Main" ViewController in the app.
+/// Buttons used to instantiate different VC's and push them on the view stack using HomeViewControllerDelegate.
+class HomeViewController: UIViewController {
+    weak var delegate: HomeViewControllerDelegate?
+
     override func viewDidLoad() {
-        print("📣 Running:      ViewController.viewDidLoad()")
+        print("📣 Running:      HomeViewController.viewDidLoad()")
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
+        title = "HOME VIEW CONTROLLER"
         addButtons()
     }
 
-    /* ACCESIBILITY:
+    /**
+     ACCESIBILITY:
 
      UIButton.Configuration automatically uses Dynamic Types so
-     any titles, or SF icons set via Configuration will
+     any titles, or SF icons set via Configuration should automatically
      respond to adjusting Display & Text Large Text size.
 
      Using Smart Invert will always work since it inverts colors for any view and doesn't
@@ -28,6 +41,7 @@ class ViewController: UIViewController {
 
      NOTE: Curiously enough, UIImages will respond, so the "hand.tap" icon in firstButton will
      increase in size as Larger Text size is adjusted, but the text will stay the same size.
+
      */
 
     lazy var firstButton: UIButton = {
@@ -42,9 +56,11 @@ class ViewController: UIViewController {
         button.layer.cornerRadius = 15
         button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
 
-        /// Images/icons attached to buttons already track the dynamic type size changes.
-        /// This property prevents scaling past the standard range
-        /// (if "Larger Accessibility Sizes" is ON) and is false by default.
+        /**
+        Images/icons attached to buttons already track the dynamic type size changes.
+        This property prevents scaling past the standard range
+        (if "Larger Accessibility Sizes" is ON) and is false by default.
+         */
         // button.adjustsImageSizeForAccessibilityContentSizeCategory = true
 
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -59,7 +75,7 @@ class ViewController: UIViewController {
         config.title = "Tap me!"
         config.image = UIImage(systemName: "hand.tap")
         config.imagePlacement = .trailing
-        config.imagePadding = 15
+        config.imagePadding = 30
         config.baseForegroundColor = .systemBlue
 
         button.configuration = config
@@ -68,14 +84,37 @@ class ViewController: UIViewController {
         return button
     }()
 
+    lazy var thirdButton: UIButton = {
+        let button = UIButton(
+            type: .system
+        )
+        var config = UIButton.Configuration.prominentGlass()
+        config.title = "Deliverable P6 1 - TABLE"
+        config.image = UIImage(systemName: "tablecells.fill")
+        config.imagePlacement = .leading
+        config.imagePadding = 10
+
+        button.configuration = config
+        button.addTarget(self, action: #selector(goToList), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    @objc private func goToList() {
+        delegate?.didTapShowTable()
+    }
+
     private func addButtons() {
         view.addSubview(firstButton)
         view.addSubview(secondButton)
+        view.addSubview(thirdButton)
         NSLayoutConstraint.activate([
             firstButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            firstButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            firstButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             secondButton.topAnchor.constraint(equalTo: firstButton.bottomAnchor, constant: 15),
-            secondButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15)
+            secondButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            thirdButton.topAnchor.constraint(equalTo: secondButton.bottomAnchor, constant: 30),
+            thirdButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15)
         ])
     }
 }

@@ -10,6 +10,9 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
+    /// UINavigationController - Add a coordinator: AppCoordinator? property that you can later link.
+    var coordinator: AppCoordinator?
+
     func scene(
         _ scene: UIScene,
         willConnectTo session: UISceneSession,
@@ -21,8 +24,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new
         // (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
         print("📣 Running:      SceneDelegate.scene(_:willConnectTo:options:)")
+
+        /** USING THE COORDINATOR PATTERN:
+         - create a "base" navigation controller
+         - construct AppCoordinator and pass base navigation controller to it
+         - run coordinator.start() to show root VC
+         - programatically configure window property (if using a storyboard, this will automatically be initialized and attached)
+         and attach it to the scene
+         */
+        let navController = UINavigationController()
+        coordinator = AppCoordinator(navigationController: navController)
+        coordinator?.start()
+
+        window = UIWindow(windowScene: windowScene)
+        window?.rootViewController = navController
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

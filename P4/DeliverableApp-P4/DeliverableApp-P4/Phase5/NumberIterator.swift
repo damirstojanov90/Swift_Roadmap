@@ -15,6 +15,7 @@ which will change that value to 1 when called. Create a test case which will obs
 the value change and assert whether value is 1.
 */
 
+// TODO: Better naming, NumberIterator does not reflect what the class actually does?
 class NumberIterator {
     var number: Int
 
