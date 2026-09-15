@@ -31,8 +31,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
          - create a "base" navigation controller
          - construct AppCoordinator and pass base navigation controller to it
          - run coordinator.start() to show root VC
-         - programatically configure window property (if using a storyboard, this will automatically be initialized and attached)
-         and attach it to the scene
+         - programatically configure window property (if using a storyboard, this will automatically be
+         initialized and attached) and attach it to the scene
          */
         let navController = UINavigationController()
         coordinator = AppCoordinator(navigationController: navController)

@@ -5,7 +5,9 @@
 //  Created by Damir Stojanov on 19.08.2026..
 //
 
-/** Deliverables
+// TODO: Better naming, NumberIterator does not reflect what the class actually does?
+
+/** Deliverables - Phase 5
 1. Create a class object which will iterate over a function yielding various results, for
 example return a random number between 0 and 1. Create a test case which will
 succeed only if returned value is > 0.5
@@ -14,8 +16,6 @@ succeed only if returned value is > 0.5
 which will change that value to 1 when called. Create a test case which will observe
 the value change and assert whether value is 1.
 */
-
-// TODO: Better naming, NumberIterator does not reflect what the class actually does?
 class NumberIterator {
     var number: Int
 

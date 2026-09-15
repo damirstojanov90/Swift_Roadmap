@@ -25,10 +25,18 @@ class ItemsTableViewController: UITableViewController {
         let item = items[indexPath.row]
 //        cell.textLabel?.text = item.label
 //        cell.imageView?.image = UIImage(systemName: item.symbolName)
+
+        /// Prefererable to use Configuration API for Accessibility to modify cell content
+        /// instead of legacy alternative above.
         var content = UIListContentConfiguration.subtitleCell()
         content.text = item.label
+        content.textProperties.font = .preferredFont(forTextStyle: .body)
         content.secondaryText = item.description
+        content.secondaryTextProperties.font = .preferredFont(forTextStyle: .footnote)
         content.image = UIImage(systemName: item.symbolName)
+        content.imageProperties.maximumSize = CGSize(width: 30, height: 30)
+
+        cell.contentConfiguration = content
         return cell
     }
 }

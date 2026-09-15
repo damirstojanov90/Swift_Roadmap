@@ -14,6 +14,7 @@ struct SymbolItem {
 }
 
 extension SymbolItem {
+    // swiftlint:disable line_length
     static let library: [SymbolItem] = [
         SymbolItem(symbolName: "star.fill", label: "Star", description: "Mark a favorite or rated item"),
         SymbolItem(symbolName: "heart.fill", label: "Heart", description: "Show likes or favorites"),
@@ -89,4 +90,5 @@ extension SymbolItem {
         SymbolItem(symbolName: "hare.fill", label: "Hare", description: "Represent fast mode or speed"),
         SymbolItem(symbolName: "bird.fill", label: "Bird", description: "Represent nature or freedom")
     ]
+    // swiftlint:enable line_length
 }

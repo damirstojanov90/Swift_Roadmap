@@ -63,7 +63,8 @@ class AppCoordinator: Coordinator {
 
     func start() {
         /**
-         func start() of the AppCoordinator class is used to set the root view controller, and asign AppCoordinator as it's delegate.
+         func start() of the AppCoordinator class is used to set the root view controller,
+         and asign AppCoordinator as it's delegate.
          The AppCoordinator gets notified about navigation events and then responds to them.
          */
         let homeViewController = HomeViewController()

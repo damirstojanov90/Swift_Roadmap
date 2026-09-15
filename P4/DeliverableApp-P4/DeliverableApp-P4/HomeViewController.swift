@@ -41,7 +41,6 @@ class HomeViewController: UIViewController {
 
      NOTE: Curiously enough, UIImages will respond, so the "hand.tap" icon in firstButton will
      increase in size as Larger Text size is adjusted, but the text will stay the same size.
-
      */
 
     lazy var firstButton: UIButton = {
@@ -60,10 +59,9 @@ class HomeViewController: UIViewController {
         Images/icons attached to buttons already track the dynamic type size changes.
         This property prevents scaling past the standard range
         (if "Larger Accessibility Sizes" is ON) and is false by default.
-         */
-        // button.adjustsImageSizeForAccessibilityContentSizeCategory = true
-
+        */
         button.translatesAutoresizingMaskIntoConstraints = false
+        // button.adjustsImageSizeForAccessibilityContentSizeCategory = true
         return button
     }()
 
