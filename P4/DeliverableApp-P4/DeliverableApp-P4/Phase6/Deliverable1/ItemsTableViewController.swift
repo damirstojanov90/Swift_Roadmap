@@ -7,6 +7,8 @@
 
 import UIKit
 
+// TODO: How to make sure the list is alphabetical in order?
+
 class ItemsTableViewController: UITableViewController {
     let items = SymbolItem.library
 

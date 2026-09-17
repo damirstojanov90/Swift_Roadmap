@@ -35,6 +35,8 @@ import UIKit
  `var childCoordinators: [Coordinator] = []`
  once a coordinator is created, it is appended, and once it is finished, it is removed from the array to prevent leaks.
 
+ TODO: Since the plan is to stick as many deliverables as possible in this app wrapper, maybe I can practice the above...
+
  IMPORTANT:
  If using an AppCoordinator, you can remove Main.storyboard, just keep in mind you need to modify your `app.xcodeproj`'s
  Info.plist Values and remove Main from `UIKit Main Storyboard File Base Name`, otherwise you'll get errors!
@@ -78,5 +80,11 @@ extension AppCoordinator: HomeViewControllerDelegate {
         print("📲 AppCoordinator: HomeViewControllerDelegate - func didTapShowTable() - creating TableViewController()")
         let tableVC = TableViewController()
         navigationController.pushViewController(tableVC, animated: true)
+    }
+
+    func didTapDeliverable2() {
+        print("📲 AppCoordinator: HomeViewControllerDelegate - func didTapDeliverable2() - creating D2ViewController()")
+        let d2VC = D2ViewController()
+        navigationController.pushViewController(d2VC, animated: true)
     }
 }

@@ -9,6 +9,7 @@ import UIKit
 
 protocol HomeViewControllerDelegate: AnyObject {
     func didTapShowTable()
+    func didTapDeliverable2()
 }
 
 /// HomeViewController
@@ -56,10 +57,10 @@ class HomeViewController: UIViewController {
         button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
 
         /**
-        Images/icons attached to buttons already track the dynamic type size changes.
-        This property prevents scaling past the standard range
-        (if "Larger Accessibility Sizes" is ON) and is false by default.
-        */
+         Images/icons attached to buttons already track the dynamic type size changes.
+         This property prevents scaling past the standard range
+         (if "Larger Accessibility Sizes" is ON) and is false by default.
+         */
         button.translatesAutoresizingMaskIntoConstraints = false
         // button.adjustsImageSizeForAccessibilityContentSizeCategory = true
         return button
@@ -98,21 +99,43 @@ class HomeViewController: UIViewController {
         return button
     }()
 
+    lazy var deliverable2Button: UIButton = {
+        let button = UIButton(type: .system)
+
+        var config = UIButton.Configuration.borderedTinted()
+        config.title = "Deliverable P6 2 - COLORS"
+        config.image = UIImage(systemName: "paintpalette")
+        config.imagePlacement = .leading
+        config.imagePadding = 10
+
+        button.configuration = config
+        button.addTarget(self, action: #selector(goToDeliverable2), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
     @objc private func goToList() {
         delegate?.didTapShowTable()
+    }
+
+    @objc private func goToDeliverable2() {
+        delegate?.didTapDeliverable2()
     }
 
     private func addButtons() {
         view.addSubview(firstButton)
         view.addSubview(secondButton)
         view.addSubview(thirdButton)
+        view.addSubview(deliverable2Button)
         NSLayoutConstraint.activate([
             firstButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             firstButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             secondButton.topAnchor.constraint(equalTo: firstButton.bottomAnchor, constant: 15),
             secondButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             thirdButton.topAnchor.constraint(equalTo: secondButton.bottomAnchor, constant: 30),
-            thirdButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15)
+            thirdButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            deliverable2Button.topAnchor.constraint(equalTo: thirdButton.bottomAnchor, constant: 10),
+            deliverable2Button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15)
         ])
     }
 }

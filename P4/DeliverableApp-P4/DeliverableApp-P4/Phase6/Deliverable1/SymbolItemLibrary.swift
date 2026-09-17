@@ -13,6 +13,9 @@ struct SymbolItem {
     let description: String
 }
 
+/** TODO: IDEAS
+ - add a category property that will allow filtering.
+ */
 extension SymbolItem {
     // swiftlint:disable line_length
     static let library: [SymbolItem] = [
