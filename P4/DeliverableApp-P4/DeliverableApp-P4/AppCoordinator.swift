@@ -76,14 +76,14 @@ class AppCoordinator: Coordinator {
 }
 
 extension AppCoordinator: HomeViewControllerDelegate {
-    func didTapShowTable() {
-        print("📲 AppCoordinator: HomeViewControllerDelegate - func didTapShowTable() - creating TableViewController()")
+    func didTapDeliverable1() {
+        print("📲 AppCoordinator: HomeViewControllerDelegate - creating TableViewController()")
         let tableVC = TableViewController()
         navigationController.pushViewController(tableVC, animated: true)
     }
 
     func didTapDeliverable2() {
-        print("📲 AppCoordinator: HomeViewControllerDelegate - func didTapDeliverable2() - creating D2ViewController()")
+        print("📲 AppCoordinator: HomeViewControllerDelegate - creating D2ViewController()")
         let d2VC = D2ViewController()
         navigationController.pushViewController(d2VC, animated: true)
     }

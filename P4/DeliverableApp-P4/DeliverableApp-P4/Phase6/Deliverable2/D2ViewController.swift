@@ -48,6 +48,7 @@ class D2ViewController: UIViewController {
         /// contrasting foreground text color!
         var config = UIButton.Configuration.filled()
         config.title = "Switch Colors"
+        config.baseForegroundColor = .black
         config.buttonSize = .large
         config.contentInsets = NSDirectionalEdgeInsets(top: 25, leading: 25, bottom: 25, trailing: 25)
 
@@ -69,7 +70,10 @@ class D2ViewController: UIViewController {
         if let currentButtonColor {
             view.backgroundColor = currentButtonColor
         }
-        let randomColor = deliverable2Colors.randomElement().flatMap { UIColor(named: $0)}
+        let randomColor: UIColor? = deliverable2Colors.randomElement().flatMap {
+            return UIColor(named: $0)
+        }
+        currentButtonColor = randomColor
         colorSwitchButton.configuration?.baseBackgroundColor = randomColor
     }
 
@@ -84,12 +88,15 @@ class D2ViewController: UIViewController {
      print("💥 \(#fileID) \(#function): color asset lookup failed")
      ℹ️ = expected state, 💥 = actual bug — same glance-ability you already have, no new dependency.
 
-     If you want real observability (filterable log levels, visible in Console.app, searchable by subsystem) rather than scrollback prints, the native tool is Logger from import os — no third-party dependency needed:
+     If you want real observability (filterable log levels, visible in Console.app, searchable by subsystem)
+     rather than scrollback prints, the native tool is Logger from import os — no third-party dependency needed:
      import os
      private let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "D2", category: "ColorSwitch")
 
      logger.info("No previous button color yet (first tap)")
      logger.error("Color asset lookup failed")
-     That's the right call if this app grows past a couple of view controllers and you actually need to filter/search logs later — for a single-screen deliverable, plain print with your emoji convention is enough. Your call which one fits what you're going for.
+     That's the right call if this app grows past a couple of view controllers and you actually need to
+     filter/search logs later — for a single-screen deliverable, plain print with your emoji convention
+     is enough. Your call which one fits what you're going for.
      */
 }
